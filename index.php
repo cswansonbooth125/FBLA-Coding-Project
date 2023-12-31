@@ -13,8 +13,17 @@
     </div>
     
     <?php
-        include("display_table.php");
+        include("display-table.php");
     ?>
+    <div>
+        <p>If you're an admin, login below.<br></p>
+        <input type="text" id="username_input" placeholder="username">
+        <input type="text" id="username_input" placeholder="password">
+        <button style="font-size: 16px">
+            Login
+        </button>
+    </div>
+    
 
 </body>
 </html>
