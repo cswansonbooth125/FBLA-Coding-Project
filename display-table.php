@@ -17,7 +17,7 @@
 
     if ($result->num_rows > 0) {
         // Fetch data and display it in HTML table
-        echo "<table border='1'>";
+        echo "<table class='info-table'>";
         echo "<tr><th>Name</th><th>Type</th><th>Resources</th><th>Contact_info</th></tr>";
 
         while($row = $result->fetch_assoc()) {
