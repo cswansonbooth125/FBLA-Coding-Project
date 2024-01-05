@@ -4,14 +4,20 @@
     $password = "root";
     $dbname = "partners";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) 
+    try 
+    {
+        $conn = new mysqli($servername, $username, $password, $dbname);
+    } catch (Exception $e) 
     {
         die("Connection failed: " . $conn->connect_error);
     }
+    
+
+    // Check connection
+    //if ($conn->connect_error) 
+    //{
+    //    die("Connection failed: " . $conn->connect_error);
+    //}
 
     $sql = "SELECT * FROM partners_table";
     $result = $conn->query($sql);
