@@ -15,14 +15,22 @@
     <?php
         include("display-table.php");
     ?>
-    <div>
-        <p>If you're an admin, login below.<br></p>
-        <input type="text" id="username_input" placeholder="username">
-        <input type="text" id="username_input" placeholder="password">
-        <button style="font-size: 16px">
-            Login
-        </button>
-    </div>
+
+    <form action="login.php" method="post">
+        <p>If you are an admin you can login below.</p>
+        <label for="Username"></label>
+        <input type="text" name="uname" placeholder="Username"><br>
+
+        <label for="Password"></label>
+        <input type="password" name="password" placeholder="Password">
+
+        <button type="submit">Login</button>
+        <?php if (isset($_GET['error'])) { ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php } ?>
+            
+        
+    </form>
     
 
 </body>
