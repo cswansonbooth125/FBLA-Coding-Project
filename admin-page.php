@@ -1,4 +1,5 @@
 <?php
+//this shit only works at my dads wtf
 session_start();
 
 if (isset($_SESSION['id']))
@@ -29,6 +30,9 @@ if (isset($_SESSION['id']))
         include("display-table.php");
     ?>
     
+    <form action="update-table.php" method="post">
+        <input type="text">
+    </form>
 </body>
 </html>
 
