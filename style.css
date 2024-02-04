@@ -54,18 +54,20 @@ h2 {
 .responsive-table {
     li {
         border-radius: 3px;
-        padding: 25px 30px;
-        display: flex;
+        padding: 15px 30px;
+        display: flex; /* Center vertically within row */
         justify-content: space-between;
+        align-items: center; /* Center vertically within row */
         margin-bottom: 25px;
     }
 
     .table-header {
         background-color: #95A5A6;
-        font-size: 14px;
+        font-size: 20px;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         text-align: center; /* Center align content in all columns */
+        padding: 22px 0;
     }
 
     .table-row {
@@ -73,30 +75,21 @@ h2 {
         box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
     }
 
-    .col-1{
-        flex-basis: 15%;
-        text-align: center; /* Center align content in all columns */
-    }
-    .col-2{
-        flex-basis: 25%;
-        text-align: center; /* Center align content in all columns */
-
-    }
-    .col-3{
-        flex-basis: 25%;
-        text-align: center; /* Center align content in all columns */
-
-    }
+    .col-1,
+    .col-2,
+    .col-3,
     .col-4 {
         flex-basis: 25%;
         text-align: center; /* Center align content in all columns */
+        margin: 0 auto; /* Center horizontally */
+        font-size: 20px;
     }
 
     @media all and (max-width: 767px) {
         .table-header {
             display: none;
         }
-        .table-row {}
+        
 
         li {
             display: block;
