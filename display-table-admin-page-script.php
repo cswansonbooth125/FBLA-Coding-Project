@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     echo "<h2>Partner Information</h2>";
 
     // Add a form element for checkbox selection and deletion
-    echo "<form id='deleteForm' action='delete.php' method='post'>";
+    echo "<form id='deleteForm' action='delete-row-script.php' method='post'>";
 
     echo "<ul class='responsive-table'>";
     
