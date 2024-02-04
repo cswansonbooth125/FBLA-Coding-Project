@@ -45,24 +45,34 @@ if (isset($_SESSION['id']))
     <h3>Create New Table Entry</h3>
 
     <form class = 'update' action="update-table-index-script.php" method="post">
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Resources</th>
-        <th>Contact Info</th>
-      </tr>
-      <tr>
-        <td><input class = 'update-input' type="text" name="col1" placeholder='Name'></td>
-        <td><input class = 'update-input' type="text" name="col2" placeholder='Type'></td>
-        <td><input class = 'update-input' type="text" name="col3" placeholder='Resources'></td>
-        <td><input class = 'update-input' type="text" name="col4" placeholder='Contact Info'></td>
-      </tr>
-      <!-- Add more rows as needed -->
-    </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Resources</th>
+                <th>Contact Info</th>
+            </tr>
+            <tr>
+                <td class="tooltip-container">
+                <input class='update-input tooltip' type="text" name="col1" placeholder='Name'>
+                <span class="tooltip-text">Enter the name of the business or partner.</span></td>
+                <td class="tooltip-container"><input class='update-input' type="text" name="col2" placeholder='Type'>
+                <span class="tooltip-text">Enter the type of business</span></td>
+                <td class="tooltip-container"><input class='update-input' type="text" name="col3" placeholder='Resources'>
+                <span class="tooltip-text">Enter what this business provides</span></td>
+                <td class="tooltip-container"><input class='update-input' type="text" name="col4" placeholder='Contact Info'>
+                <span class="tooltip-text">Enter the contact info for this business</span></td>
+            </tr>
+  <!-- Add more rows as needed -->
+</table>
+
 
     <!-- Add submit button or other form elements as needed -->
-    <input class = 'button-13' type="submit" value="Add to table">
+    <div class="tooltip-container">
+        <input class='button-13 tool' type="submit" value="Add to table">
+        <span class="tooltip-text">Click to add the information to the table</span>
+    </div>
+
   </form>
   <form class = 'logout-button'action="index.php" method="post">
             <button type="submit">Logout</button>

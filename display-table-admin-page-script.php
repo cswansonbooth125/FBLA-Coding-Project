@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Table rows with checkboxes
         echo "<li class='table-row'>";
-        echo "<div class='col col-0' data-label='Select'><input type='checkbox' name='delete[]' value='" . $row["ID"] . "'></div>"; // Assuming ID is the primary key
+        echo "<div class='col col-0' data-label='Select'><div class='tooltip-container'><input type='checkbox' name='delete[]' value='" . $row["ID"] . "'><span class='tooltip-text'>Click to delete the selected rows from the table</span></div></div>"; // Assuming ID is the primary key
         echo "<div class='col col-1' data-label='Name'>" . $row["Name"] . "</div>";
         echo "<div class='col col-2' data-label='Type'>" . $row["Type"] . "</div>";
         echo "<div class='col col-3' data-label='Resources'>" . $row["Resources"] . "</div>";
@@ -47,7 +47,11 @@ if ($result->num_rows > 0) {
     echo "</ul>";
 
     // Add a delete button
-    echo "<button type='submit' name='deleteButton'>Delete Selected Rows</button>";
+    echo "<div class='tooltip-container'>";
+    echo "<button type='submit' name='deleteButton' class='tool'>Delete Selected Rows</button>";
+    echo "<span class='tooltip-text'>Click to delete the selected rows from the table</span>";
+    echo "</div>";
+
 
     // Close the form
     echo "</form>";
