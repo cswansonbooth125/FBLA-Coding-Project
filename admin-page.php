@@ -20,20 +20,19 @@ if (isset($_SESSION['id']))
 <body>
     <div class="main-header">
         <h1>Our Partners</h1>
+        
     </div>
     
     <?php
 
     if(isset($_SESSION['username'])) {
         $activeUser = $_SESSION['username'];
-        echo '<p> Welcome ' . $activeUser . '</p>';
+        echo '<h2> Welcome ' . $activeUser . '</h2>';
     };
 
     ?>
 
-    <form action="index.php" method="post">
-        <button type="submit">Logout</button>
-    </form>
+    
 
     <?php
         include("display-table-admin-page-script.php");
@@ -43,7 +42,7 @@ if (isset($_SESSION['id']))
     <br>
     <br>
 
-    <h1>Create New Table Entry</h1>
+    <h3>Create New Table Entry</h3>
 
     <form class = 'update' action="update-table-index-script.php" method="post">
     <table>
@@ -63,8 +62,11 @@ if (isset($_SESSION['id']))
     </table>
 
     <!-- Add submit button or other form elements as needed -->
-    <input type="submit" value="Add to table">
+    <input class = 'button-13' type="submit" value="Add to table">
   </form>
+  <form class = 'logout-button'action="index.php" method="post">
+            <button type="submit">Logout</button>
+        </form>
 </body>
 </html>
 

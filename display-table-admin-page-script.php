@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Start of responsive-table container
     echo "<div class='container'>";
-    echo "<h2>Partner Information</h2>";
+    echo "<h3>Partner Information</h3>";
 
     // Add a form element for checkbox selection and deletion
     echo "<form id='deleteForm' action='delete-row-script.php' method='post'>";
@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     echo "</ul>";
 
     // Add a delete button
-    echo "<button class = 'delete-button' type='submit' name='deleteButton'>Delete Selected Rows</button>";
+    echo "<button type='submit' name='deleteButton'>Delete Selected Rows</button>";
 
     // Close the form
     echo "</form>";

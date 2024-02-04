@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class = 'index-body'>
     <div class="main-header">
         <h1>Our Partners</h1>
     </div>
@@ -18,15 +18,15 @@
         include("display-table-script.php");
     ?>
 
-    <form action="login-script.php" method="post">
+    <form class = 'login-form' action="login-script.php" method="post">
         <p>If you are an admin you can login below.</p>
         <label for="Username"></label>
-        <input type="text" name="uname" placeholder="Username"><br>
+        <input class = 'update-input' type="text" name="uname" placeholder="Username"><br>
 
         <label for="Password"></label>
-        <input type="password" name="password" placeholder="Password">
+        <input class = 'update-input' type="password" name="password" placeholder="Password"><br>
 
-        <button type="submit">Login</button>
+        <button class = 'button-13' type="submit">Login</button>
         <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
