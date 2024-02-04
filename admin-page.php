@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+session_start();
 if (isset($_SESSION['id']))
 {
 
@@ -20,7 +20,15 @@ if (isset($_SESSION['id']))
         <h1>Our Partners</h1>
     </div>
     
-    <h1>Hello <?php echo $_SESSION['username']; ?></h1>
+    <?php
+
+    if(isset($_SESSION['username'])) {
+        $activeUser = $_SESSION['username'];
+        echo '<p> Welcome ' . $activeUser . '</p>';
+    };
+
+    ?>
+
     <form action="index.php" method="post">
         <button type="submit">Logout</button>
     </form>
@@ -33,7 +41,8 @@ if (isset($_SESSION['id']))
 </html>
 
 <?php 
-} else 
+} 
+else 
 {
     header("Location: index.php");
     exit();

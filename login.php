@@ -9,7 +9,8 @@ $dbname = "admins";
 try 
 {
     $conn = new mysqli($servername, $username, $password, $dbname);
-} catch (Exception $e) 
+} 
+catch (Exception $e) 
 {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -45,13 +46,11 @@ if (isset($_POST['uname']) && isset($_POST['password']))
 
         if (mysqli_num_rows($result) > 0)
         {
+            echo "found";
             $row = mysqli_fetch_assoc($result);
             $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
             header("Location: admin-page.php");
-            
-
-            #print_r($row);
         }
         else
         {

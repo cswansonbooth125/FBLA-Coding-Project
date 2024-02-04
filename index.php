@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="main-header">
-        <img src="images/CTHS-logo.png" alt="CTHS-logo" style="width: 10%;">
         <h1>Our Partners</h1>
     </div>
     
