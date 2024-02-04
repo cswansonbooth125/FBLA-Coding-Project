@@ -33,7 +33,7 @@ if (isset($_SESSION['id']))
     </form>
 
     <?php
-        include("display-table-admin.php");
+        include("display-table-admin-page-script.php");
     ?>
 
     <br>
@@ -42,7 +42,7 @@ if (isset($_SESSION['id']))
 
     <h1>Create New Table Entry</h1>
 
-    <form action="update-table.php" method="post">
+    <form action="update-table-index-script.php" method="post">
     <table>
       <tr>
         <th>Name</th>

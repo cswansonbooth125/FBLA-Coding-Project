@@ -12,10 +12,10 @@
     </div>
     
     <?php
-        include("display-table.php");
+        include("display-table-script.php");
     ?>
 
-    <form action="login.php" method="post">
+    <form action="login-script.php" method="post">
         <p>If you are an admin you can login below.</p>
         <label for="Username"></label>
         <input type="text" name="uname" placeholder="Username"><br>
