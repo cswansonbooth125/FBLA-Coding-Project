@@ -13,6 +13,9 @@ if (isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="main-header">
@@ -42,19 +45,19 @@ if (isset($_SESSION['id']))
 
     <h1>Create New Table Entry</h1>
 
-    <form action="update-table-index-script.php" method="post">
+    <form class = 'update' action="update-table-index-script.php" method="post">
     <table>
       <tr>
         <th>Name</th>
         <th>Type</th>
         <th>Resources</th>
-        <th>Contact_info</th>
+        <th>Contact Info</th>
       </tr>
       <tr>
-        <td><input type="text" name="col1"></td>
-        <td><input type="text" name="col2"></td>
-        <td><input type="text" name="col3"></td>
-        <td><input type="text" name="col4"></td>
+        <td><input class = 'update-input' type="text" name="col1" placeholder='Name'></td>
+        <td><input class = 'update-input' type="text" name="col2" placeholder='Type'></td>
+        <td><input class = 'update-input' type="text" name="col3" placeholder='Resources'></td>
+        <td><input class = 'update-input' type="text" name="col4" placeholder='Contact Info'></td>
       </tr>
       <!-- Add more rows as needed -->
     </table>

@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
     // Add a form element for checkbox selection and deletion
     echo "<form id='deleteForm' action='delete-row-script.php' method='post'>";
 
-    echo "<ul class='responsive-table'>";
+    echo "<ul class='responsive-table-admin'>";
     
     // Table header
     echo "<li class='table-header'>";
@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     echo "</ul>";
 
     // Add a delete button
-    echo "<button type='submit' name='deleteButton'>Delete Selected Rows</button>";
+    echo "<button class = 'delete-button' type='submit' name='deleteButton'>Delete Selected Rows</button>";
 
     // Close the form
     echo "</form>";

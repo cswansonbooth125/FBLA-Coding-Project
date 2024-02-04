@@ -1,5 +1,12 @@
 body {
-    font-family: 'lato', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    ul{
+        padding-inline-start:0;
+    }
+    text-align: center;
+    th{
+        font-family: 'Titillium Web', sans-serif;
+    }
 }
 
 .container {
@@ -115,24 +122,34 @@ h2 {
         }
     }
 }
+/* ... Your existing CSS ... */
+
 .responsive-table-admin {
     li {
         border-radius: 3px;
-        padding: 15px 30px;
+        padding: 22px 22px; /* Remove padding */
+        margin: 0; /* Remove margin */
         display: flex; /* Center vertically within row */
-        justify-content: space-between;
         align-items: center; /* Center vertically within row */
         margin-bottom: 25px;
     }
-
+    ul {
+        border-radius: 3px;
+        padding: 0; /* Remove padding */
+        margin: 0; /* Remove margin */
+        display: flex; /* Center vertically within row */
+        align-items: center; /* Center vertically within row */
+        margin-bottom: 25px;
+        
+       
+    }
     .table-header {
         background-color: #95A5A6;
         font-size: 20px;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         text-align: center; /* Center align content in all columns */
-        padding: 22px 0;
-        flex-basis: 40%;
+        padding: 22px 22px;
     }
 
     .table-row {
@@ -141,39 +158,16 @@ h2 {
     }
 
     .col-0{
-        flex-basis: 10%;
+        flex-basis: 20%; /* Adjust as needed */
         text-align: center; /* Center align content in all columns */
-        margin: 0 auto; /* Center horizontally */
         font-size: 20px;
     }
-    .col-1{
-        flex-basis: 20%;
-        text-align: center; /* Center align content in all columns */
-        margin: 0 auto; /* Center horizontally */
-        font-size: 20px;
-    }
-
-    }
-    .col-2{
-        flex-basis: 20%;
-        text-align: center; /* Center align content in all columns */
-        margin: 0 auto; /* Center horizontally */
-        font-size: 20px;
-    }
-
-    
-    .col-3{
-        flex-basis: 20%;
-        text-align: center; /* Center align content in all columns */
-        margin: 0 auto; /* Center horizontally */
-        font-size: 20px;
-    }
-
-    
+    .col-1,
+    .col-2,
+    .col-3,
     .col-4 {
-        flex-basis: 20%;
+        flex-basis: 20%; /* Adjust as needed */
         text-align: center; /* Center align content in all columns */
-        margin: 0 auto; /* Center horizontally */
         font-size: 20px;
     }
 
@@ -181,29 +175,73 @@ h2 {
         .table-header {
             display: none;
         }
-        
 
         li {
             display: block;
         }
 
         .col {
-            text-align: center;
-            flex-basis: 100%;
-        }
-
-        .col {
             display: flex;
             padding: 10px 0;
-            text-align: center;
 
             &:before {
                 color: #6C7A89;
                 padding-right: 10px;
                 content: attr(data-label);
-                flex-basis: 50%;
-                text-align: center;
             }
         }
     }
+}
 
+.update{
+    text-align: center;
+    display: inline-block;
+}
+
+th{
+    background-color: #95A5A6;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-align: center; /* Center align content in all columns */
+    padding: 22px 22px;
+    border-bottom:25px;
+    padding-left: 43.8px;
+    padding-right:43.8px;
+    
+}
+
+table th:first-child{
+    border-radius: 3px 0 0 3px;
+    
+}
+
+table th:last-child{
+    border-radius: 0 3px 3px 0;
+}
+
+table{
+    border-spacing:0;
+    border-bottom:25px;
+    
+    
+}
+td{
+    width:25%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    
+}
+
+.update-input{
+   
+    width:250px;
+    height:45px;
+    border-radius:5px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    border:0;
+    outline:0;
+}
+::placeholder{
+    text-align: center;
+}
