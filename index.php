@@ -13,6 +13,13 @@
     <div class="main-header">
         <h1>Our Partners</h1>
     </div>
+
+    <form action="search-script.php" method="post">
+        <label for="searchTerm">Search:</label>
+        <input type="text" id="searchTerm" name="searchTerm" required>
+        <button type="submit">Search</button>
+    </form>
+
     
     <?php
         include("display-table-script.php");
