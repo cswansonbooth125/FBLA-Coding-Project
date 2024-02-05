@@ -44,5 +44,7 @@ if ($result->num_rows > 0) {
 
 // Close the database connection
 $conn->close();
+header('Location: search-page.php');
+exit();
 
 ?>
