@@ -16,9 +16,10 @@
 
     <!-- Search box. -->
     <form action="search-script.php" method="post">
-        <label for="searchTerm">Search:</label>
-        <input type="text" id="searchTerm" name="searchTerm" required>
-        <button type="submit">Search</button>
+        <br>
+           
+        <input class = 'update-input' type="text" id="searchTerm" name="searchTerm" required placeholder="Search"><br>
+        <button class = 'button-13' type="submit">Search</button>
     </form>
 
     <!-- Filters database for manufacturers. -->
