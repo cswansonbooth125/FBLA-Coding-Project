@@ -22,13 +22,6 @@ if (isset($_SESSION['id']))
         <h1>Our Partners</h1>
         
     </div>
-
-    <!-- Search box. -->
-    <form action="admin-search-script.php" method="post">
-        <label for="searchTerm">Search:</label>
-        <input type="text" id="searchTerm" name="searchTerm" required>
-        <button type="submit">Search</button>
-    </form>
     
     <?php
 
@@ -42,7 +35,7 @@ if (isset($_SESSION['id']))
     
 
     <?php
-        include("display-table-admin-script.php");
+        include("display-search-admin-script.php");
     ?>
 
     <br>
