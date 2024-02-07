@@ -20,8 +20,13 @@ if (isset($_SESSION['id']))
 <body>
     <div class="main-header">
         <h1>Our Partners</h1>
-        
+        <div class = "logout">
+        <form class = 'logout-button logout'action="index.php" method="post">
+            <button class = "logout" type="submit">Logout</button>
+        </form>
     </div>
+    </div>
+    
     
     <?php
 
@@ -74,9 +79,7 @@ if (isset($_SESSION['id']))
     </div>
 
   </form>
-  <form class = 'logout-button'action="index.php" method="post">
-            <button type="submit">Logout</button>
-        </form>
+  
 </body>
 </html>
 
