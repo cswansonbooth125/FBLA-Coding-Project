@@ -32,7 +32,55 @@ if (isset($_SESSION['id']))
 
     ?>
 
-    
+<?php
+// Database connection parameters
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$database = "partners";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <label for="dropdown1">Type of Partner</label>
+    <select id="dropdown1" name="dropdown1">
+        <option value=""></option> <!-- Empty option -->
+        <?php
+        // Fetching data for first dropdown
+        $sql = "SELECT DISTINCT Type FROM partners_table";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row["Type"] . "'>" . $row["Type"] . "</option>";
+            }
+        }
+        ?>
+    </select>
+
+    <label for="dropdown2">Resources From Partner</label>
+    <select id="dropdown2" name="dropdown2">
+        <option value=""></option> <!-- Empty option -->
+        <?php
+        // Fetching data for second dropdown
+        $sql = "SELECT DISTINCT Resources FROM partners_table";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row["Resources"] . "'>" . $row["Resources"] . "</option>";
+            }
+        }
+        ?>
+    </select>
+
+    <input type="submit" name="submit" value="Submit">
+</form>
 
     <?php
         include("display-search-admin-script.php");

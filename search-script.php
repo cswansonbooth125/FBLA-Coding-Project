@@ -29,11 +29,11 @@ if ($result->num_rows > 0) {
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
         // Insert the found item into a new table
-        $insertSQL = "INSERT INTO search_results (ID, Name, Type, Resources, Contact_info) VALUES ('" . $row["ID"] . "', '" . $row["Name"] . "', '" . $row["Type"] . "', '" . $row["Resources"] . "', '" . $row["Contact_info"] ."')";
+        $insertSQL = "INSERT INTO search_results (Name, Type, Resources, Contact_info) VALUES ('" . $row["Name"] . "', '" . $row["Type"] . "', '" . $row["Resources"] . "', '" . $row["Contact_info"] ."')";
 
         // Execute the insert query
         if ($conn->query($insertSQL) === TRUE) {
-            echo "ID: " . $row["ID"] . " - Name: " . $row["Name"] . " - Inserted into found_items_table successfully<br>";
+            echo " - Name: " . $row["Name"] . " - Inserted into found_items_table successfully<br>";
         } else {
             echo "Error inserting record: " . $conn->error;
         }

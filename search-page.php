@@ -20,7 +20,6 @@
         <button type="submit">Search</button>
     </form>
 
-    
     <?php
         include("display-search-script.php");
     ?>
