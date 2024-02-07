@@ -4,13 +4,15 @@ $username = "root";
 $password = "root";
 $dbname = "partners";
 
+include 'filter.php';
+
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
 } catch (Exception $e) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM partners_table";
+$sql = "SELECT * FROM filtered_partners";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
