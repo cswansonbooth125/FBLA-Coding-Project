@@ -27,7 +27,7 @@
         <label for="dropdown">Select an option:</label>
         <select id="dropdown1" name="dropdown1">
             <option value="option1"></option>
-            <option value="option2">Manufacturers</option>
+            <option value="option2">Manufacturer</option>
             <option value="option3">Option 3</option>
         </select>
         <button type="submit">Submit</button>
