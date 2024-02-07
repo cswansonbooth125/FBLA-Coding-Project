@@ -19,12 +19,18 @@ try {
     die();
 }
 
+$sql = "SELECT COUNT(*) AS count FROM filtered_partners";
 
-$sql = "DELETE FROM filtered_partners;";
-$conn->query($sql);
-$sql = "INSERT INTO filtered_partners SELECT * FROM partners_table;";
-$result = $conn->query($sql);
+// Prepare and execute SQL query
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// Check if the count is zero
+if ($result['count'] == 0) {
+    $sql = "INSERT INTO filtered_partners SELECT * FROM partners_table;";
+    $conn->query($sql);
+} 
 
 
 // Check if form is submitted
@@ -64,12 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $rows_affected = $stmt->rowCount();
         if ($rows_affected > 0) {
             echo "Deleted $rows_affected rows from the table.";
+            header("Location: index.php");
         } else {
             echo "No rows deleted. Maybe no matching rows found.";
+            header("Location: index.php");
         }
-
-        header("Location: index.php");
-        exit();
+        
     } else {
         // If neither dropdown value is set
         echo "Please select at least one option from the dropdowns.";
@@ -78,5 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If form is not submitted
     echo "Form not submitted.";
 }
+$sql = "DELETE FROM filtered_partners;";
+$conn->query($sql);
 
 ?>

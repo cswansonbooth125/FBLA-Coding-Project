@@ -4,8 +4,6 @@ $username = "root";
 $password = "root";
 $dbname = "partners";
 
-include 'filter.php';
-
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
 } catch (Exception $e) {
