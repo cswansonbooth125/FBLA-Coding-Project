@@ -14,13 +14,36 @@
         <h1>Our Partners</h1>
     </div>
 
+    <!-- Search box. -->
     <form action="search-script.php" method="post">
         <label for="searchTerm">Search:</label>
         <input type="text" id="searchTerm" name="searchTerm" required>
         <button type="submit">Search</button>
     </form>
 
-    
+    <!-- Filters database for manufacturers. -->
+    <form action="filter.php" method="post">
+        <label for="dropdown">Select an option:</label>
+        <select id="dropdown1" name="dropdown1">
+            <option value="option1"></option>
+            <option value="option2">Manufacturers</option>
+            <option value="option3">Option 3</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Filters database for resources. -->
+    <form action="filter.php" method="post">
+        <label for="dropdown">Select an option:</label>
+        <select id="dropdown2" name="dropdown2">
+            <option value="option1"></option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Displays the unfiltered or filtered table. -->
     <?php
         include("display-table-script.php");
     ?>
