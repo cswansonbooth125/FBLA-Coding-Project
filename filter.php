@@ -29,33 +29,34 @@ $result = $conn->query($sql);
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Initialize variables
-    $whereClause = "";
-    $params = array();
+    // Check if at least one dropdown value is set
+    if (isset($_POST["dropdown1"]) || isset($_POST["dropdown2"])) {
+        // Get selected options from the dropdowns
+        $selected_option1 = isset($_POST["dropdown1"]) ? $_POST["dropdown1"] : null;
+        $selected_option2 = isset($_POST["dropdown2"]) ? $_POST["dropdown2"] : null;
 
-    // Check if dropdown1 value is set and not empty
-    if (isset($_POST["dropdown1"]) && !empty($_POST["dropdown1"])) {
-        $selected_option1 = $_POST["dropdown1"];
-        $whereClause .= "Type = :option1";
-        $params[':option1'] = $selected_option1;
-    }
+        // Prepare SQL query
+        $sql = "DELETE FROM filtered_partners WHERE ";
+        $conditions = array();
 
-    // Check if dropdown2 value is set and not empty
-    if (isset($_POST["dropdown2"]) && !empty($_POST["dropdown2"])) {
-        $selected_option2 = $_POST["dropdown2"];
-        if (!empty($whereClause)) {
-            $whereClause .= " AND ";
+        // Add conditions for dropdown1 and dropdown2 if they are not empty
+        if ($selected_option1 !== null) {
+            $conditions[] = "Type != :option1";
         }
-        $whereClause .= "Resources = :option2";
-        $params[':option2'] = $selected_option2;
-    }
+        if ($selected_option2 !== null) {
+            $conditions[] = "Resources != :option2";
+        }
 
-    // Prepare and execute SQL query
-    if (!empty($whereClause)) {
-        $sql = "DELETE FROM filtered_partners WHERE $whereClause";
+        // Combine conditions with AND
+        $sql .= implode(" AND ", $conditions);
+
+        // Prepare and execute SQL query
         $stmt = $db->prepare($sql);
-        foreach ($params as $key => &$value) {
-            $stmt->bindParam($key, $value);
+        if ($selected_option1 !== null) {
+            $stmt->bindParam(':option1', $selected_option1);
+        }
+        if ($selected_option2 !== null) {
+            $stmt->bindParam(':option2', $selected_option2);
         }
         $stmt->execute();
 
@@ -66,10 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "No rows deleted. Maybe no matching rows found.";
         }
-    } else {
-        echo "No filter criteria selected.";
+
         header("Location: index.php");
         exit();
+    } else {
+        // If neither dropdown value is set
+        echo "Please select at least one option from the dropdowns.";
     }
 } else {
     // If form is not submitted
