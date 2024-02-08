@@ -9,17 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
 </head>
-<body class = 'index-body'>
+<body>
+<div class = "backing">
     <div class="main-header">
-        <h1>Our Partners</h1>
+        <h1>PartnerSphere</h1>
     </div>
-
+    <br>
     <!-- Search box. -->
     <form action="search-script.php" method="post">
-        <br>
-           
-        <input class = 'update-input' type="text" id="searchTerm" name="searchTerm" required placeholder="Search"><br>
-        <button class = 'button-13' type="submit">Search</button>
+        <label for="searchTerm">Search:</label>
+        <input class = "search-bar" type="text" id="searchTerm" name="searchTerm" required>
+        <button class = "button-13" type = "submit">Search</button> 
+        
     </form>
 
 <?php
@@ -133,6 +134,6 @@ if ($conn->connect_error) {
 
     
     
-
+    </div>
 </body>
 </html>

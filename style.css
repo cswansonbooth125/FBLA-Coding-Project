@@ -251,18 +251,7 @@ td{
     
 }
 
-.update-input{
-   
-    width:250px !important;
-    height:45px;
-    border-radius:5px;
-    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-    border:0;
-    outline:0;
-    text-align: center;
-    background-color: #9DB2BF !important;
-    margin-bottom:10px;
-}
+
 ::placeholder{
     text-align: center;
 }
@@ -341,9 +330,7 @@ button:focus {
     text-align: right;
 }
 
-.index-body{
-    height: 2000px;
-}
+
 .login-form{
     height: 400px;
 }
@@ -403,7 +390,7 @@ button:focus {
     padding: 7px;
   }
 
-  input[type=text] {
+  .search-bar {
     background-color:#dddddd;
     border:none;
     border-bottom: 3px solid #27374D;
@@ -412,18 +399,31 @@ button:focus {
     outline: none;
     font-size: 15px;
     color: #27374D;
-    width:30px;
+    width:30px ;
   }
-  input[type=text]:focus {
+  .search-bar:focus {
     border-bottom: 5px solid #27374D;
     -webkit-transition: 0.1s;
     transition: 0.1s;
-    width:200px;
+    width:200px ;
   }
+  .update-input{
+   
+    width:250px !important;
+    height:45px;
+    border-radius:5px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    border:0;
+    outline:0;
+    text-align: center;
+    background-color: #9DB2BF;
+    margin-bottom:10px;
+    color:#27374D;
+}
   .backing{
     background-color:#dddddd;
     width:50%;
-    height:1166px;
+    height:1157px;
     position:absolute;
     left:25%;
     top:10%;
