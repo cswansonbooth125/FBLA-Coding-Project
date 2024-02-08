@@ -423,7 +423,7 @@ button:focus {
   .backing{
     background-color:#dddddd;
     width:50%;
-    height:1157px;
+    height:120%;
     position:absolute;
     left:25%;
     top:10%;
@@ -439,7 +439,7 @@ button:focus {
     background-color: #dddddd;
     color:#27374D;
     position: absolute;
-    top:-12.8%;
+    top:-9.5%;
     left:-50%;
     width:2560px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
