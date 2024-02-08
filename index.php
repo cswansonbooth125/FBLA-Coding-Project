@@ -60,41 +60,42 @@
         </div>
 
         
-
-
         <?php
-        // Database connection parameters
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $database = "partners";
+            // Database connection parameters
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $dbname = "partners";
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-        // Construct SQL query based on filter criteria
-        $sql = "SELECT * FROM partners_table WHERE 1=1";
-        if (!empty($_GET['type'])) {
-            $type = $_GET['type'];
-            $sql .= " AND Type = '$type'";
-        }
-        if (!empty($_GET['resources'])) {
-            $resources = $_GET['resources'];
-            $sql .= " AND Resources = '$resources'";
-        }
+            // Construct SQL query based on filter criteria
+            $sql = "SELECT * FROM partners_table WHERE 1=1";
+            if (!empty($_GET['type'])) {
+                $type = $_GET['type'];
+                $sql .= " AND Type = '$type'";
+            }
+            if (!empty($_GET['resources'])) {
+                $resources = $_GET['resources'];
+                $sql .= " AND Resources = '$resources'";
+            }
 
-        // Check if a search query is submitted
+                    // Check if a search query is submitted
         if (isset($_GET['searchTerm'])) {
             // Get the search query
             $searchTerm = $_GET['searchTerm'];
 
-            // Modify SQL query to filter results by name
-            $sql .= " AND Name LIKE '%$searchTerm%'";
+            // Modify your SQL query to filter results by name
+            $sql = "SELECT * FROM partners_table WHERE Name LIKE '%$searchTerm%'";
+        } else {
+            // If no search query is submitted, retrieve all records
+            $sql = "SELECT * FROM partners_table";
         }
 
         // Execute the SQL query
