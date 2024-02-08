@@ -1,90 +1,55 @@
 <?php
-// Database connection
-$dsn = 'mysql:host=localhost;dbname=partners';
+// Database connection parameters
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "partners";
+$database = "partners";
 
-try {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-} catch (Exception $e) {
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+$sql = "INSERT INTO partners_table_dup SELECT * FROM partners_table;";
+$conn->query($sql);
+$sql = "SELECT DISTINCT Name FROM partners_table_dup;";
+$conn->query($sql);
+
+// Check connection
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-try {
-    $db = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-    die();
-}
-
-$sql = "SELECT COUNT(*) AS count FROM filtered_partners";
-
-// Prepare and execute SQL query
-$stmt = $db->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Check if the count is zero
-if ($result['count'] == 0) {
-    $sql = "INSERT INTO filtered_partners SELECT * FROM partners_table;";
-    $conn->query($sql);
-} 
-
-
-// Check if form is submitted
+// Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if at least one dropdown value is set
-    if (isset($_POST["dropdown1"]) || isset($_POST["dropdown2"])) {
-        // Get selected options from the dropdowns
-        $selected_option1 = isset($_POST["dropdown1"]) ? $_POST["dropdown1"] : null;
-        $selected_option2 = isset($_POST["dropdown2"]) ? $_POST["dropdown2"] : null;
+    // Retrieve values from dropdowns
+    $selectedValue1 = $_POST["dropdown1"];
+    $selectedValue2 = $_POST["dropdown2"];
 
-        // Prepare SQL query
-        $sql = "DELETE FROM filtered_partners WHERE ";
-        $conditions = array();
-
-        // Add conditions for dropdown1 and dropdown2 if they are not empty
-        if ($selected_option1 !== null) {
-            $conditions[] = "Type != :option1";
-        }
-        if ($selected_option2 !== null) {
-            $conditions[] = "Resources != :option2";
-        }
-
-        // Combine conditions with AND
-        $sql .= implode(" AND ", $conditions);
-
-        // Prepare and execute SQL query
-        $stmt = $db->prepare($sql);
-        if ($selected_option1 !== null) {
-            $stmt->bindParam(':option1', $selected_option1);
-        }
-        if ($selected_option2 !== null) {
-            $stmt->bindParam(':option2', $selected_option2);
-        }
-        $stmt->execute();
-
-        // Check if any rows were affected
-        $rows_affected = $stmt->rowCount();
-        if ($rows_affected > 0) {
-            echo "Deleted $rows_affected rows from the table.";
-            header("Location: index.php");
-        } else {
-            echo "No rows deleted. Maybe no matching rows found.";
-            header("Location: index.php");
-        }
-        
+    // Constructing the condition based on the selected dropdown menu
+    if (!empty($selectedValue1) && !empty($selectedValue2)) {
+        // If both dropdowns are not empty, delete items that don't match either value
+        $sql_delete = "DELETE FROM partners_table WHERE Type != '$selectedValue1' AND Resources != '$selectedValue2'";
+    } elseif (!empty($selectedValue1)) {
+        // If dropdown1 is not empty, delete items that don't match its value
+        $sql_delete = "DELETE FROM partners_table WHERE Type != '$selectedValue1'";
+    } elseif (!empty($selectedValue2)) {
+        // If dropdown2 is not empty, delete items that don't match its value
+        $sql_delete = "DELETE FROM partners_table WHERE Resources != '$selectedValue2'";
     } else {
-        // If neither dropdown value is set
-        echo "Please select at least one option from the dropdowns.";
+        // Both dropdowns are empty, no action needed
+        echo "No action performed as both dropdowns are empty.";
+        header("Location: index.php");
+        exit; // Exit script
     }
-} else {
-    // If form is not submitted
-    echo "Form not submitted.";
-}
-$sql = "DELETE FROM filtered_partners;";
-$conn->query($sql);
 
+    // Execute the delete operation
+    if ($conn->query($sql_delete) !== TRUE) {
+        echo "Error deleting records: " . $conn->error;
+    } else {
+        echo "Records deleted successfully";
+        header("Location: index.php");
+    }
+}
+
+// Close connection
+$conn->close();
 ?>

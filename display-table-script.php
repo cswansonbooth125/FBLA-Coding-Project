@@ -10,7 +10,7 @@ try {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM filtered_partners";
+$sql = "SELECT * FROM partners_table";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
