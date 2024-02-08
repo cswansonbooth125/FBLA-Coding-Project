@@ -20,29 +20,9 @@
         <!-- Search box. -->
         <form action="" method="get">
             <label for="searchTerm">Search:</label>
-            <input class="search-bar" type="text" id="searchTerm" name="searchTerm">
+            <input class="search-bar" type="text" id="searchTerm" name="searchTerm" >
             <button class="button-13" type="submit">Search</button>
         </form>
-
-        <h3>Filter Table</h3>
-        <form method="get" action="">
-                <label for="type">Select Type:</label>
-                <select id="type" name="type">
-                    <option value="">All</option>
-                    <option value="Manufacturer">Manufacturer</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                </select>
-                <label for="resources">Select Resources:</label>
-                <select id="resources" name="resources">
-                    <option value="">All</option>
-                    <option value="3D Printers">3D Printers</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                </select>
-                <input type="submit" value="Filter">
-            </form>
-
 
         <?php
         // Database connection parameters
@@ -59,24 +39,16 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Construct SQL query based on filter criteria
-        $sql = "SELECT * FROM partners_table WHERE 1=1";
-        if (!empty($_GET['type'])) {
-            $type = $_GET['type'];
-            $sql .= " AND Type = '$type'";
-        }
-        if (!empty($_GET['resources'])) {
-            $resources = $_GET['resources'];
-            $sql .= " AND Resources = '$resources'";
-        }
-
         // Check if a search query is submitted
         if (isset($_GET['searchTerm'])) {
             // Get the search query
             $searchTerm = $_GET['searchTerm'];
 
-            // Modify SQL query to filter results by name
-            $sql .= " AND Name LIKE '%$searchTerm%'";
+            // Modify your SQL query to filter results by name
+            $sql = "SELECT * FROM partners_table WHERE Name LIKE '%$searchTerm%'";
+        } else {
+            // If no search query is submitted, retrieve all records
+            $sql = "SELECT * FROM partners_table";
         }
 
         // Execute the SQL query

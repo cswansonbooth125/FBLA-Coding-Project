@@ -38,30 +38,46 @@ if (isset($_SESSION['id'])) {
 
             ?>
 
-            <h3>Filter Table</h3>
+            
+
+            <br>
+
+            <form action="" method="get">
+                <label for="searchTerm">Search:</label>
+                <input class="search-bar" type="text" id="searchTerm" name="searchTerm" >
+                <button style="width: 40px;"class="button-13" type="submit">🔍</button>
+        </form>
+            
+            <br>
+
+            <div class="dropbtn">
             <form method="get" action="">
                 <label for="type">Select Type:</label>
-                <select id="type" name="type">
-                    <option value="">All</option>
-                    <option value="Manufacturer">Manufacturer</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
+                <select class="dropbtn" id="type" name="type">
+                    <div class="dropdown-content">
+                        <option value="">All</option>
+                        <option value="Manufacturer">Manufacturer</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                    </div>
                 </select>
+
+                <br>
+
                 <label for="resources">Select Resources:</label>
-                <select id="resources" name="resources">
+                <select class="dropbtn" id="resources" name="resources">
                     <option value="">All</option>
                     <option value="3D Printers">3D Printers</option>
                     <option value="a">a</option>
                     <option value="b">b</option>
                 </select>
-                <input type="submit" value="Filter">
-            </form>
 
-            <h3>Search by Name</h3>
-            <form method="get" action="">
-                <input class = "search-bar" type="text" name="search" >
-                <input type="submit" value="Search">
+                <br>
+                <br>
+                
+                <input class="button-13"type="submit" value="Filter">
             </form>
+            </div>
 
             <?php
             // Database connection parameters
@@ -89,14 +105,17 @@ if (isset($_SESSION['id'])) {
                 $sql .= " AND Resources = '$resources'";
             }
 
-            // Check if a search query is submitted
-            if (isset($_GET['search'])) {
-                // Get the search query
-                $search = $_GET['search'];
+                    // Check if a search query is submitted
+        if (isset($_GET['searchTerm'])) {
+            // Get the search query
+            $searchTerm = $_GET['searchTerm'];
 
-                // Modify SQL query to filter results by name
-                $sql .= " AND Name LIKE '%$search%'";
-            }
+            // Modify your SQL query to filter results by name
+            $sql = "SELECT * FROM partners_table WHERE Name LIKE '%$searchTerm%'";
+        } else {
+            // If no search query is submitted, retrieve all records
+            $sql = "SELECT * FROM partners_table";
+        }
 
             // Execute the SQL query
             $result = $conn->query($sql);
