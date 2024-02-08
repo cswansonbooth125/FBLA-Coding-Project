@@ -16,32 +16,50 @@
         <div class="main-header">
             <h1>PartnerSphere</h1>
         </div>
-        <br>
-        <!-- Search box. -->
-        <form action="" method="get">
-            <label for="searchTerm">Search:</label>
-            <input class="search-bar" type="text" id="searchTerm" name="searchTerm">
-            <button class="button-13" type="submit">Search</button>
-        </form>
 
-        <h3>Filter Table</h3>
+        <br>
+        <br>
+        <br>
+
+        <form action="" method="get">
+                <label for="searchTerm">Search:</label>
+                <input class="search-bar" type="text" id="searchTerm" name="searchTerm" >
+                <button style="width: 40px;"class="button-13" type="submit">🔍</button>
+            </form>
+
+        
+        <br>
+
+        <div class="dropbtn">
         <form method="get" action="">
-                <label for="type">Select Type:</label>
-                <select id="type" name="type">
+            <label for="type">Select Type:</label>
+            <select class="dropbtn" id="type" name="type">
+                <div class="dropdown-content">
                     <option value="">All</option>
                     <option value="Manufacturer">Manufacturer</option>
                     <option value="a">a</option>
                     <option value="b">b</option>
-                </select>
-                <label for="resources">Select Resources:</label>
-                <select id="resources" name="resources">
-                    <option value="">All</option>
-                    <option value="3D Printers">3D Printers</option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                </select>
-                <input type="submit" value="Filter">
-            </form>
+                </div>
+            </select>
+
+            <br>
+
+            <label for="resources">Select Resources:</label>
+            <select class="dropbtn" id="resources" name="resources">
+                <option value="">All</option>
+                <option value="3D Printers">3D Printers</option>
+                <option value="a">a</option>
+                <option value="b">b</option>
+            </select>
+
+            <br>
+            <br>
+            
+            <input class="button-13"type="submit" value="Filter">
+        </form>
+        </div>
+
+        
 
 
         <?php
